@@ -5,8 +5,8 @@ import "./Board.css";
 function AAA() {
   return (
     <div>
-      <div class="box"></div>
-      <div class="box2">
+      <div class="mainBox"></div>
+      <div class="mainBox2">
         <text class="mainText">게시판</text>
       </div>
     </div>
