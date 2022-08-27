@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Component from "./Component";
-
-function GroupText({ text, color = "black", fontsize = 16 }) {
+function Group({ index, text, Clicked, color = "black", fontsize = 16 }) {
   const styleObj = {
     color: color,
     fontSize: fontsize,
@@ -12,11 +10,11 @@ function GroupText({ text, color = "black", fontsize = 16 }) {
 
   return (
     <div>
-      <div onClick={Component} style={styleObj}>
+      <div index={index} onClick={() => Clicked(index)} style={styleObj}>
         {text}
       </div>
     </div>
   );
 }
 
-export default GroupText;
+export default Group;
