@@ -6,26 +6,14 @@ import "./Board.css";
 
 function AAA() {
   const number = useSelector((state) => state.number);
+  const data = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
   const [clickedIdx, changeIdx] = React.useState(0);
-  var data;
 
   function ClickFunc(idx) {
     changeIdx(idx);
     console.log(idx, "B Function");
-  }
-
-  async function GetJson() {
-    await fetch("file.json")
-      .then(function (response) {
-        return response.json();
-      })
-      .then(
-        function (json) {
-          data = json;
-        }.bind(this)
-      );
     console.log(data);
   }
 
@@ -49,7 +37,6 @@ function AAA() {
         break;
       case 5:
         result = <div>게시판5</div>;
-        GetJson();
         break;
     }
     return result;
@@ -57,7 +44,6 @@ function AAA() {
 
   return (
     <div>
-      {number}
       <div className="mainBox">
         <div className="mainText">
           <h3>게시판</h3>
@@ -66,12 +52,14 @@ function AAA() {
           <Group index={3} text="3번 게시판" Clicked={ClickFunc} />
           <Group index={4} text="4번 게시판" Clicked={ClickFunc} />
           <Group index={5} text="5번 게시판" Clicked={ClickFunc} />
+          <button onClick={() => dispatch({ type: "GET" })}></button>
           <button onClick={() => dispatch({ type: "PLUS" })}></button>
         </div>
       </div>
 
       <div className="contentBox">
         <SelectGroup />
+        <h1>{number + "AAAA"}</h1>
       </div>
     </div>
   );
