@@ -4,10 +4,10 @@ import AAA from "./Components/Board";
 import { createStore } from "redux";
 import { Provider, useSelector, useDispatch, connect } from "react-redux";
 
-async function reducer(currentState, action) {
+function reducer(currentState, action) {
   if (currentState === undefined) {
     return {
-      data: "ad",
+      data: [],
       number: 123123,
     };
   }
@@ -15,10 +15,11 @@ async function reducer(currentState, action) {
 
   if (action.type === "PLUS") {
     newState.number++;
+    Post();
   }
+
   if (action.type === "GET") {
-    newState.data = await GetJson();
-    console.log(newState.data);
+    newState.data = GetURL();
   }
   return newState;
 }
@@ -34,8 +35,34 @@ async function GetJson() {
         data = json;
       }.bind(this)
     );
+  console.log("AAAAA", data);
   return data;
 }
+function Post() {
+  fetch("http://13.124.202.172/api/", {
+    method: "POST",
+    body: JSON.stringify({
+      title: "Test",
+      body: "I am testing!",
+      userId: 1,
+    }),
+  }).then((response) => console.log(response));
+}
+
+async function GetURL() {
+  var data;
+  await fetch("http://13.124.202.172/api/")
+    .then(function (response) {
+      return response.json();
+    })
+    .then(
+      function (json) {
+        data = json;
+      }.bind(this)
+    );
+  return data;
+}
+
 const store = createStore(reducer);
 
 function App() {
