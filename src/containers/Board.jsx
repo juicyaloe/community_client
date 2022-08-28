@@ -1,7 +1,13 @@
 import React from "react";
+import BoardComp from "../components/BoardComp";
 
 function Board() {
-    return <div>B</div>
+
+    
+
+
+
+    return <BoardComp></BoardComp>
 }
 
 export default Board;
