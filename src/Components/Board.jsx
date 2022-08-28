@@ -30,33 +30,31 @@ function AAA() {
 
   function ClickFunc(idx) {
     changeIdx(idx);
-    console.log(idx, "B Function");
-    console.log(data);
   }
 
   function SelectGroup() {
     var result;
     switch (clickedIdx) {
       case 0:
-        result = <div>첫 화면</div>;
+        result = "첫 화면";
         break;
       case 1:
-        result = <div>게시판1</div>;
+        result = "게시판1";
         break;
       case 2:
-        result = <div>게시판2</div>;
+        result = "게시판2";
         break;
       case 3:
-        result = <div>게시판3</div>;
+        result = "게시판3";
         break;
       case 4:
-        result = <div>게시판4</div>;
+        result = "게시판4";
         break;
       case 5:
-        result = <div>게시판5</div>;
+        result = "게시판5";
         break;
     }
-    return result;
+    return <h2>{result}</h2>;
   }
 
   return (
