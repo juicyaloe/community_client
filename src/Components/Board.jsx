@@ -1,9 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider, useSelector, useDispatch, connect } from "react-redux";
 import Group from "./Group";
 import "./Board.css";
 
 function AAA() {
+  const number = useSelector((state) => state.number);
+  const dispatch = useDispatch();
+
   const [clickedIdx, changeIdx] = React.useState(0);
   var data;
 
@@ -53,7 +57,7 @@ function AAA() {
 
   return (
     <div>
-      {clickedIdx}
+      {number}
       <div className="mainBox">
         <div className="mainText">
           <h3>게시판</h3>
@@ -62,6 +66,7 @@ function AAA() {
           <Group index={3} text="3번 게시판" Clicked={ClickFunc} />
           <Group index={4} text="4번 게시판" Clicked={ClickFunc} />
           <Group index={5} text="5번 게시판" Clicked={ClickFunc} />
+          <button onClick={() => dispatch({ type: "PLUS" })}></button>
         </div>
       </div>
 
