@@ -1,3 +1,9 @@
+/************************************************
+ * 메인 중앙 부분 컴포넌트 관련 정의
+ * 
+ * 
+*************************************************/
+
 import React, { useState, useEffect } from "react";
 import BoardComp from "../components/BoardComp";
 import getWriting, {postWriting} from "../funcs/apis";

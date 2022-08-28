@@ -1,3 +1,9 @@
+/************************************************
+ * 하단 바 관련 컴포넌트 정의
+ * 
+ * 
+*************************************************/
+
 import React, {useEffect, useState} from "react";
 import FooterComp from "../components/FooterComp";
 

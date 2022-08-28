@@ -8,6 +8,7 @@ import Footer from './containers/Footer';
 function App() {
   return (
     // 단순히 컴포넌트를 나열하는 정도로만 구현
+    // className은 부트스트랩 css 적용
     <div className="App container d-flex flex-column min-vh-100">
       <NavBar></NavBar>
       <div className="row pt-3">

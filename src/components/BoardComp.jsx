@@ -1,3 +1,9 @@
+/************************************************
+ * Board 연결
+ * 
+ * 
+*************************************************/
+
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css'
 import getWriting, {postWriting} from "../funcs/apis";
