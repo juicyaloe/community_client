@@ -8,15 +8,9 @@ function reducer(currentState, action) {
   if (currentState === undefined) {
     return {
       data: [],
-      number: 123123,
     };
   }
   const newState = { ...currentState };
-
-  if (action.type === "PLUS") {
-    newState.number++;
-    Post();
-  }
 
   if (action.type === "GET") {
     newState.data = GetURL();

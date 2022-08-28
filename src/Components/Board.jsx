@@ -83,7 +83,6 @@ function AAA() {
               }
             }}
           ></button>
-          <button onClick={() => dispatch({ type: "PLUS" })}></button>
         </div>
       </div>
 
