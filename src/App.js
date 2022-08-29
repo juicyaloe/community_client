@@ -1,9 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import NavBar from './containers/NavBar';
-import Board from './containers/Board';
-import 'bootstrap/dist/css/bootstrap.css'
-import Footer from './containers/Footer';
+import logo from "./logo.svg";
+import "./App.css";
+import NavBar from "./containers/NavBar";
+import Board from "./containers/Board";
+import "bootstrap/dist/css/bootstrap.css";
+import Footer from "./containers/Footer";
+import SideBar from "./containers/SideBar";
 
 function App() {
   return (
@@ -12,14 +13,16 @@ function App() {
     <div className="App container d-flex flex-column min-vh-100">
       <NavBar></NavBar>
       <div className="row pt-3">
-        <div className="col-3">
-          빈칸입니다
+        <div className="col-3 bg-primary bg-opacity-25">
+          <SideBar></SideBar>
         </div>
         <div className="col-9">
           <Board></Board>
         </div>
       </div>
-      <div className="mt-auto"><Footer></Footer></div>
+      <div className="mt-auto">
+        <Footer></Footer>
+      </div>
     </div>
   );
 }
