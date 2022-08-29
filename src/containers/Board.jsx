@@ -12,11 +12,15 @@ import { Provider, useSelector, useDispatch } from "react-redux";
 // 이하 컴포넌트의 복잡한 과정을 처리
 function Board() {
   var [writngList, writngListFunc] = useState([]);
+  var boardIdx = useSelector((state) => state.currentIdx);
 
-  // 처음 1회만 실행
-  useEffect(function () {
-    loadWriting();
-  }, []);
+  useEffect(
+    function () {
+      // loadWriting();
+      console.log("Changed");
+    },
+    [boardIdx]
+  );
 
   async function loadWriting() {
     let data = await getWriting();

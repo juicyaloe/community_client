@@ -11,6 +11,7 @@ import { getBoardList } from "../funcs/boardManage";
 
 // 이하 컴포넌트의 복잡한 과정을 처리
 function SideBar() {
+  const dispatch = useDispatch();
   // 처음 1회만 실행
 
   useEffect(function () {}, []);
@@ -20,9 +21,13 @@ function SideBar() {
   for (var i = 0; i < boardList.length; i++) {
     result.push(
       <li
+        data-id={i}
         key={i}
         class="list-group-item"
-        onClick={(e) => alert(e.target.innerText + " Clicked")}
+        onClick={(e) => {
+          dispatch({ type: "CHANGEINDEX", value: e.target.dataset.id });
+          console.log(e.target.dataset.id);
+        }}
       >
         {boardList[i]}
       </li>
