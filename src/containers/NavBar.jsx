@@ -6,7 +6,7 @@
 
 import React, { useState, useEffect } from "react";
 import NavBarComp from "../components/NavBarComp";
-import store from "../store";
+import { Provider, useSelector, useDispatch } from 'react-redux';
 
 // 이하 컴포넌트의 복잡한 과정을 처리
 function NavBar() {

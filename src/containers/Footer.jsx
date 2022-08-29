@@ -6,6 +6,7 @@
 
 import React, {useEffect, useState} from "react";
 import FooterComp from "../components/FooterComp";
+import { Provider, useSelector, useDispatch } from 'react-redux';
 
 function Footer() {
     

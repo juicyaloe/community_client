@@ -7,11 +7,11 @@
 var address = "http://13.124.202.172/"
 
 // 게시글을 불러오는 함수
-export default async function getWriting() {
+export async function getWriting() {
     var data;
     await fetch(address + "api/")
       .then(function (response) {return response.json();})
-      .then(function (json) { data = json; }.bind(this));
+      .then(function (json) { data = json; });
     return data;
 }
 
