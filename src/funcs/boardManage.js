@@ -1,10 +1,7 @@
 var boardList = [
-  "일반게시판",
-  "자유게시판",
-  "자동차게시판",
-  "비행기게시판",
-  "장터게시판",
-  "장터게시판",
+  ["전체 게시판", "all"],
+  ["자동차 게시판", "car"],
+  ["비행기 게시판", "airplane"],
 ];
 
 export function getBoardList() {

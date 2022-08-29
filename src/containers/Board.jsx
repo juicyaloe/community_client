@@ -6,8 +6,9 @@
 
 import React, { useState, useEffect } from "react";
 import BoardComp from "../components/BoardComp";
-import { getWriting, postWriting } from "../funcs/apis";
+import { getWriting, postWriting, getWritingLocal } from "../funcs/apis";
 import { Provider, useSelector, useDispatch } from "react-redux";
+import { getBoardList } from "../funcs/boardManage";
 
 // 이하 컴포넌트의 복잡한 과정을 처리
 function Board() {
@@ -16,14 +17,13 @@ function Board() {
 
   useEffect(
     function () {
-      // loadWriting();
-      console.log("Changed");
+      loadWriting();
     },
     [boardIdx]
   );
 
   async function loadWriting() {
-    let data = await getWriting();
+    let data = await getWritingLocal(getBoardList()[boardIdx][1]);
 
     var listTag = [];
     for (var i = 0; i < data.length; i++) {

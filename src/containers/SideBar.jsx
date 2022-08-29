@@ -29,7 +29,7 @@ function SideBar() {
           console.log(e.target.dataset.id);
         }}
       >
-        {boardList[i]}
+        {boardList[i][0]}
       </li>
     );
   }
