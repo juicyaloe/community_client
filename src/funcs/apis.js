@@ -21,8 +21,8 @@ export async function postWriting() {
     await fetch(address + "api/", {
         method: "POST",
         body: new URLSearchParams({
-            title: 'a1',
-            content: 'b1',
+            title: 'post',
+            content: 'post',
         }),
     })
     .then((response) => console.log(response.json()))
