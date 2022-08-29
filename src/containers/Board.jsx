@@ -6,7 +6,7 @@
 
 import React, { useState, useEffect } from "react";
 import BoardComp from "../components/BoardComp";
-import { getWriting, postWriting, getWritingLocal } from "../funcs/apis";
+import { getWriting, postWriting } from "../funcs/apis";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import { getBoardList } from "../funcs/boardManage";
 
@@ -23,7 +23,7 @@ function Board() {
   );
 
   async function loadWriting() {
-    let data = await getWritingLocal(getBoardList()[boardIdx][1]);
+    let data = await getWriting(getBoardList()[boardIdx][1]);
 
     var listTag = [];
     for (var i = 0; i < data.length; i++) {
