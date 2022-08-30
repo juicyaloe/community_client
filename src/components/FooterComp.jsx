@@ -6,14 +6,12 @@
 
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { getBoardList } from "../funcs/boardManage";
 import { Provider, useSelector, useDispatch } from "react-redux";
 
 function FooterComp(props) {
   const dispatch = useDispatch();
   var searchValue;
 
-  var boardList = getBoardList();
   return (
     <nav className="navbar bg-light">
       <div className="container-fluid">
