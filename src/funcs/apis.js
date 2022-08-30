@@ -19,7 +19,7 @@ export async function getWriting(option) {
   return data;
 }
 
-// 게시글 쓰는 함수(아직 구현 미완)
+// 게시글 쓰는 함수
 export async function postWriting(token, option, _title, _content) {
   var data;
   await fetch(address + "api/writing/" + option, {
