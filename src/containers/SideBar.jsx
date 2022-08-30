@@ -26,7 +26,7 @@ function SideBar() {
         class="list-group-item"
         onClick={(e) => {
           dispatch({ type: "CHANGEINDEX", value: e.target.dataset.id });
-          console.log(e.target.dataset.id);
+          dispatch({ type: "SEARCH", value: "" });
         }}
       >
         {boardList[i][0]}
