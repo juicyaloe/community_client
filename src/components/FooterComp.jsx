@@ -6,13 +6,12 @@
 
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Search } from "../funcs/Search";
-import { getBoardList } from "../funcs/boardManage";
+import { Provider, useSelector, useDispatch } from "react-redux";
 
 function FooterComp(props) {
+  const dispatch = useDispatch();
   var searchValue;
 
-  var boardList = getBoardList();
   return (
     <nav className="navbar bg-light">
       <div className="container-fluid">
@@ -25,7 +24,7 @@ function FooterComp(props) {
             aria-label="Search"
           />
           <button
-            onClick={() => Search(searchValue)}
+            onClick={() => dispatch({ type: "SEARCH", value: searchValue })}
             className="btn btn-outline-success"
             type="submit"
           >

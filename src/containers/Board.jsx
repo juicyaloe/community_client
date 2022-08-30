@@ -13,30 +13,31 @@ import { getBoardList } from "../funcs/boardManage";
 // 이하 컴포넌트의 복잡한 과정을 처리
 function Board() {
   var [writngList, writngListFunc] = useState([]);
+  var searchText = useSelector((state) => state.searchText);
   var boardIdx = useSelector((state) => state.currentIdx);
 
   useEffect(
     function () {
       loadWriting();
     },
-    [boardIdx]
+    [boardIdx, searchText]
   );
 
   async function loadWriting() {
     let data = await getWriting(getBoardList()[boardIdx][1]);
-
     var listTag = [];
     for (var i = 0; i < data.length; i++) {
       var li = data[i];
-      listTag.push(
-        <div key={li.id}>
-          <strong>{li.title}</strong>
-          <br />
-          {li.content}
-          <br />
-          <br />
-        </div>
-      );
+      if (li.title.includes(searchText) || li.content.includes(searchText))
+        listTag.push(
+          <div key={li.id}>
+            <strong>{li.title}</strong>
+            <br />
+            {li.content}
+            <br />
+            <br />
+          </div>
+        );
     }
     writngListFunc(listTag);
   }

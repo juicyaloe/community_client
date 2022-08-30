@@ -4,7 +4,8 @@
  *
  *************************************************/
 
-var address = "http://13.124.202.172/";
+// var address = "http://13.124.202.172/";
+var address = "http://minmac.kro.kr/";
 
 // 게시글을 불러오는 함수
 export async function getWriting(option) {
