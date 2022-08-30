@@ -18,7 +18,7 @@ function App() {
           <SideBar></SideBar>
         </div>
         <div className="col-9">
-          {/* <Board></Board> */}
+          <Board></Board>
           <PostBoard></PostBoard>
         </div>
       </div>

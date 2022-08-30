@@ -8,12 +8,26 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
 import { getBoardList } from "../funcs/boardManage";
+import { postWriting } from "../funcs/apis";
+import { TOKEN } from "../funcs/TOKEN";
 
 var selectedBoardIdx = 1;
 var postInfo = {
-  title: "제목",
-  content: "내용",
+  title: "",
+  content: "",
 };
+
+async function PostBtnClicked() {
+  let a = await postWriting(
+    TOKEN,
+    getBoardList()[selectedBoardIdx][1],
+    postInfo.title,
+    postInfo.content
+  );
+  console.log(selectedBoardIdx);
+  console.log(getBoardList()[selectedBoardIdx][1]);
+  console.log(a);
+}
 
 function selectBoard() {
   var boardList = getBoardList();
@@ -30,7 +44,7 @@ function selectBoard() {
   return (
     <div class="col-3">
       <select
-        onChange={(e) => console.log(e.target.value)}
+        onChange={(e) => (selectedBoardIdx = e.target.value)}
         class="form-select "
         aria-label="Default select example"
       >
@@ -39,19 +53,22 @@ function selectBoard() {
     </div>
   );
 }
-function PostBtnClicked() {
-  console.log(selectedBoardIdx);
-}
 function PostBoardComp(props) {
   return (
     <div>
       <div class="row">
         {selectBoard()}
         <div class="col-9">
-          <input type="text" placeholder="글 제목" class="form-control " />
+          <input
+            onChange={(e) => (postInfo.title = e.target.value)}
+            type="text"
+            placeholder="글 제목"
+            class="form-control "
+          />
         </div>
       </div>
       <textarea
+        onChange={(e) => (postInfo.content = e.target.value)}
         class="form-control  mt-2"
         placeholder="글을 작성하세요"
         id="floatingTextarea"
