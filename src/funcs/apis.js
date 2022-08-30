@@ -23,16 +23,17 @@ export async function getWriting(option) {
 // 게시글 쓰는 함수
 export async function postWriting(token, option, _title, _content) {
   var data;
-  await fetch(address + "api/writing/" + option, {
+  await fetch(address + "api/writing/all/", {
     method: "POST",
     headers: {
-      Authorization: "Token " + token
+      Authorization: "Token " + token,
     },
     body: new URLSearchParams({
+      board: option,
       title: _title,
       content: _content,
     }),
-  }).then((response) => data = response.json());
+  }).then((response) => (data = response.json()));
   // .then((result) => console.log(result));
 
   return data;
