@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./containers/NavBar";
 import Board from "./containers/Board";
+import PostBoard from "./containers/PostBoard";
 import "bootstrap/dist/css/bootstrap.css";
 import Footer from "./containers/Footer";
 import SideBar from "./containers/SideBar";
@@ -17,7 +18,8 @@ function App() {
           <SideBar></SideBar>
         </div>
         <div className="col-9">
-          <Board></Board>
+          {/* <Board></Board> */}
+          <PostBoard></PostBoard>
         </div>
       </div>
       <div className="mt-auto">
