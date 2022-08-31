@@ -10,14 +10,14 @@ import "bootstrap/dist/js/bootstrap";
 import { getBoardList } from "../funcs/boardManage";
 import { postWriting } from "../funcs/apis";
 import { TOKEN } from "../funcs/TOKEN";
-import {Link, Router, Routes, Route} from 'react-router-dom';
+import { Link, Router, Routes, Route } from "react-router-dom";
 import { Provider, useSelector, useDispatch } from "react-redux";
 
 const BOARDLIST = {
   ALL: 0,
   CAR: 1,
-  AIRPLANE: 2
-}
+  AIRPLANE: 2,
+};
 
 var selectedBoardIdx = 1;
 var postInfo = {
@@ -60,7 +60,7 @@ function selectBoard() {
   );
 }
 function PostBoardComp(props) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <div>
       <div class="row">
@@ -87,10 +87,14 @@ function PostBoardComp(props) {
       ></textarea>
       <div class="d-grid gap-2 mt-2">
         <Link to="/">
-          <button class="btn btn-primary" type="button" onClick={ function() {
-            PostBtnClicked()
-            dispatch({ type: "CHANGEINDEX", value: BOARDLIST.ALL });
-          }}>
+          <button
+            class="btn btn-primary float-end"
+            type="button"
+            onClick={function () {
+              PostBtnClicked();
+              dispatch({ type: "CHANGEINDEX", value: BOARDLIST.ALL });
+            }}
+          >
             글 작성
           </button>
         </Link>
