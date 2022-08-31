@@ -13,6 +13,12 @@ import { TOKEN } from "../funcs/TOKEN";
 import {Link, Router, Routes, Route} from 'react-router-dom';
 import { Provider, useSelector, useDispatch } from "react-redux";
 
+const BOARDLIST = {
+  ALL: 0,
+  CAR: 1,
+  AIRPLANE: 2
+}
+
 var selectedBoardIdx = 1;
 var postInfo = {
   title: "",
@@ -83,7 +89,7 @@ function PostBoardComp(props) {
         <Link to="/">
           <button class="btn btn-primary" type="button" onClick={ function() {
             PostBtnClicked()
-            dispatch({ type: "CHANGEINDEX", value: 0 });
+            dispatch({ type: "CHANGEINDEX", value: BOARDLIST.ALL });
           }}>
             글 작성
           </button>
