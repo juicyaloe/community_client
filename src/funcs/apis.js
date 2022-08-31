@@ -42,7 +42,21 @@ export async function postWriting(token, option, _title, _content) {
   return data;
 }
 
-export function login(login, password) {
-  console.log(login);
-  console.log(password);
+export async function login(_id, _password) {
+  var data;
+  await fetch(address + "api/users/login/",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      username: _id,
+      password: _password
+    })
+  }).then((response) => data = response)
+  // response.status
+  // resposne.json()
+
+  return data;
 }
