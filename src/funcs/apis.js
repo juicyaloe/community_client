@@ -23,7 +23,7 @@ export async function getWriting(option) {
 // 게시글 쓰는 함수
 export async function postWriting(token, option, _title, _content) {
 
-  var data;
+  var response;
   await fetch(address + "api/writing/" + option,
   {
     method: "POST",
@@ -35,15 +35,15 @@ export async function postWriting(token, option, _title, _content) {
       title: _title,
       content: _content
     })
-  }).then((response) => data = response)
+  }).then((_response) => response = _response)
   // response.status
   // resposne.json()
 
-  return data;
+  return response;
 }
 
 export async function login(_id, _password) {
-  var data;
+  var response;
   await fetch(address + "api/users/login/",
   {
     method: "POST",
@@ -54,9 +54,21 @@ export async function login(_id, _password) {
       username: _id,
       password: _password
     })
-  }).then((response) => data = response)
+  }).then((_response) => response = _response)
   // response.status
   // resposne.json()
 
+  return response;
+}
+
+export async function getPost(id) {
+  var data;
+  await fetch(address + "api/writing/" + id + "/")
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (json) {
+      data = json;
+    });
   return data;
 }
