@@ -6,6 +6,7 @@ import PostBoard from "./containers/PostBoard";
 import "bootstrap/dist/css/bootstrap.css";
 import Footer from "./containers/Footer";
 import SideBar from "./containers/SideBar";
+import {Link, Router, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
           <SideBar></SideBar>
         </div>
         <div className="col-9">
-          <Board></Board>
-          <PostBoard></PostBoard>
+          <Routes>
+            <Route exact path="/" element={<Board></Board>}></Route>
+            <Route path="/post" element={<PostBoard></PostBoard>}></Route>
+          </Routes>
         </div>
       </div>
       <div className="mt-auto">

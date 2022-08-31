@@ -10,6 +10,8 @@ import "bootstrap/dist/js/bootstrap";
 import { getBoardList } from "../funcs/boardManage";
 import { postWriting } from "../funcs/apis";
 import { TOKEN } from "../funcs/TOKEN";
+import {Link, Router, Routes, Route} from 'react-router-dom';
+import { Provider, useSelector, useDispatch } from "react-redux";
 
 var selectedBoardIdx = 1;
 var postInfo = {
@@ -52,6 +54,7 @@ function selectBoard() {
   );
 }
 function PostBoardComp(props) {
+  const dispatch = useDispatch()
   return (
     <div>
       <div class="row">
@@ -77,9 +80,14 @@ function PostBoardComp(props) {
         }}
       ></textarea>
       <div class="d-grid gap-2 mt-2">
-        <button class="btn btn-primary" type="button" onClick={PostBtnClicked}>
-          글 작성
-        </button>
+        <Link to="/">
+          <button class="btn btn-primary" type="button" onClick={ function() {
+            PostBtnClicked()
+            dispatch({ type: "CHANGEINDEX", value: 0 });
+          }}>
+            글 작성
+          </button>
+        </Link>
       </div>
     </div>
   );
