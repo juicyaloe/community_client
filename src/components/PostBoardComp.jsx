@@ -18,15 +18,13 @@ var postInfo = {
 };
 
 async function PostBtnClicked() {
-  let a = await postWriting(
+  let response = await postWriting(
     TOKEN,
     getBoardList()[selectedBoardIdx][1],
     postInfo.title,
     postInfo.content
   );
-  console.log(selectedBoardIdx);
-  console.log(getBoardList()[selectedBoardIdx][1]);
-  console.log(a);
+  console.log(response);
 }
 
 function selectBoard() {
