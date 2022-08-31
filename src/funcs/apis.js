@@ -35,7 +35,14 @@ export async function postWriting(token, option, _title, _content) {
       title: _title,
       content: _content
     })
-  }).then((response) => data = response.json())
+  }).then((response) => data = response)
+  // response.status
+  // resposne.json()
 
   return data;
+}
+
+export function login(login, password) {
+  console.log(login);
+  console.log(password);
 }
