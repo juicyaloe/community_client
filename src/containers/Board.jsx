@@ -34,6 +34,7 @@ function Board() {
             <strong>{li.title}</strong>
             <br />
             {li.content}
+            {li.inittime}
             <br />
             <br />
           </div>
