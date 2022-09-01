@@ -49,8 +49,11 @@ function Board() {
             if (temp.board === board || board === "all") {
             dataTag.push(
               <Link key={temp.id} to={"/writing/" + temp.id + "/"} style={{ textDecoration: 'none' }}>
-                <h4 style={{float: "left", color: "black"}}>글 제목: {temp.title}</h4>
-                / {temp.board} 게시판 글<br/><br/><br/>
+                <h4 style={{float: "left", color: "black"}} onClick={(e) => e.preventDefault()}>
+                  글 제목: {temp.title}</h4>
+                <div onClick={(e) => e.preventDefault()} style={{float: "left"}}>&nbsp;/ {temp.board} 게시판</div>
+                <button class="btn btn-primary">글 보기</button>
+                <br/><br/><br/>
               </Link>
                   )
                 }
