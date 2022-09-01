@@ -36,7 +36,7 @@ function LoginComp(props) {
             <button
               class="btn btn-primary float-end"
               onClick={async function() {
-                let response = await login("test1", "12341231a");
+                let response = await login(id, password);
 
                 if (response.status == 200) {
                   response.json().then(function(data) {
