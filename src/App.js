@@ -10,6 +10,20 @@ import { Link, Router, Routes, Route } from "react-router-dom";
 import WritingBoard from "./containers/WritingBoard";
 import Login from "./containers/Login";
 
+function App() {
+  return (
+    <div>
+      <Routes>
+        {/* 로그인 모듈 */}
+        <Route path="/login/" element={<App_Login></App_Login>}></Route>
+
+        {/* 일반 모듈 */}
+        <Route path="/*" element={<App_Board></App_Board>}></Route>
+      </Routes>
+    </div>
+  );
+}
+
 function App_Login() {
   return (
     <div>
@@ -17,21 +31,7 @@ function App_Login() {
     </div>
   );
 }
-function App_Post() {
-  return (
-    <div className="App container d-flex flex-column min-vh-100">
-      <NavBar></NavBar>
-      <div className="row pt-3">
-        <div className="col-3 bg-primary bg-opacity-25">
-          <SideBar></SideBar>
-        </div>
-        <div className="col-9">
-          <PostBoard></PostBoard>
-        </div>
-      </div>
-    </div>
-  );
-}
+
 function App_Board() {
   return (
     <div className="App container d-flex flex-column min-vh-100">
@@ -41,54 +41,11 @@ function App_Board() {
           <SideBar></SideBar>
         </div>
         <div className="col-9">
-          <Board></Board>
-        </div>
-      </div>
-      <div className="mt-auto">
-        <Footer></Footer>
-      </div>
-    </div>
-  );
-}
-function App() {
-  return (
-    // 단순히 컴포넌트를 나열하는 정도로만 구현
-    // className은 부트스트랩 css 적용
-    <div>
-      <Routes>
-        {/* board: 글 보여주기, post: 글 쓰기, writing: 글 상세 내역 */}
-        <Route path="/login/" element={<App_Login></App_Login>}></Route>
-        <Route path="/" element={<App_Board></App_Board>}></Route>
-        <Route path="/board/*" element={<App_Board></App_Board>}></Route>
-        <Route path="/post/" element={<App_Post></App_Post>}></Route>
-        <Route path="/writing/:id" element={<div></div>}></Route>
-      </Routes>
-    </div>
-  );
-}
-
-function Origin_App() {
-  return (
-    <div className="App container d-flex flex-column min-vh-100">
-      <NavBar></NavBar>
-      <div className="row pt-3">
-        <div className="col-3 bg-primary bg-opacity-25">
-          <SideBar></SideBar>
-        </div>
-        <div className="col-9">
           <Routes>
-            {/* board: 글 보여주기, post: 글 쓰기, writing: 글 상세 내역 */}
-            <Route path="/login/" element={<Login></Login>}></Route>
-            <Route
-              path="/"
-              element={<div>안녕하세요~! 게시판을 눌려서 글을 보세요</div>}
-            ></Route>
+            <Route path="/" element={<div>안녕하세요~! 게시판을 눌려서 글을 보세요</div>}></Route>
             <Route path="/board/*" element={<Board></Board>}></Route>
             <Route path="/post/" element={<PostBoard></PostBoard>}></Route>
-            <Route
-              path="/writing/:id"
-              element={<WritingBoard></WritingBoard>}
-            ></Route>
+            <Route path="/writing/:id" element={<WritingBoard></WritingBoard>}></Route>
           </Routes>
         </div>
       </div>
@@ -98,4 +55,5 @@ function Origin_App() {
     </div>
   );
 }
+
 export default App;
