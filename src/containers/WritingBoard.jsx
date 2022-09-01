@@ -12,7 +12,6 @@ function WritingBoard(props) {
     const url = useLocation()
     const urlList = url.pathname.split("/")
     const id = urlList[urlList.length - 2];
-    console.log(id);
 
     // writing/:id 에서 id 얻어오기
 
@@ -23,7 +22,7 @@ function WritingBoard(props) {
     async function showWriting(id) {
         let response = await getPost(id);
 
-        if (response.status !== 404) {
+        if (response.status === 200) {
             response.json().then(
                 function(data) {
 
