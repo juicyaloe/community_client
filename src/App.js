@@ -7,16 +7,21 @@ import "bootstrap/dist/css/bootstrap.css";
 import Footer from "./containers/Footer";
 import SideBar from "./containers/SideBar";
 import { Navigate, Link, Router, Routes, Route } from "react-router-dom";
+import { Provider, useSelector, useDispatch } from "react-redux";
 import WritingBoard from "./containers/WritingBoard";
 import Login from "./containers/Login";
-import { isLogin } from "./funcs/TOKEN";
+import { useEffect } from "react";
+
 
 function App() {
+  var isLogin = useSelector((state) => state.isLogin);
   return (
     <div>
       <Routes>
         {/* 로그인 모듈 */}
-        <Route path="/login/" element={<App_Login></App_Login>}></Route>
+        <Route path="/login/" element={
+         !isLogin ? <App_Login></App_Login> : <Navigate to="/"></Navigate>    
+        }></Route>
         {/* 일반 모듈 */}
         <Route path="/*" element={
           isLogin ? <App_Board></App_Board> : <Navigate to="/login/"></Navigate>   

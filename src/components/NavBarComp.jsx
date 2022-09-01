@@ -12,9 +12,9 @@ function NavBarComp(props) {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="http://localhost:3000/">
+        <Link className="navbar-brand" to="/">
           커뮤니티
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
