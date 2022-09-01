@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link, useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import WritingBoardComp from "../components/WritingBoardComp";
 import { Provider, useSelector, useDispatch } from "react-redux";
 
@@ -45,11 +45,10 @@ function WritingBoard(props) {
         } else {
             console.log("유효하지 않은 id값")
         }
-    
-        
     }
+  }
 
-    return <WritingBoardComp data={data}></WritingBoardComp>
+  return <WritingBoardComp data={data}></WritingBoardComp>;
 }
 
-export default WritingBoard
+export default WritingBoard;

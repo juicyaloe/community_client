@@ -34,12 +34,12 @@ function NavBarComp(props) {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="post/">
+              <Link className="nav-link" to="/post/">
                 글쓰기
               </Link>
             </li>
             <li className="nav-item float-end">
-              <Link className="nav-link" to="login/">
+              <Link className="nav-link" to="/login/">
                 로그인
               </Link>
             </li>
