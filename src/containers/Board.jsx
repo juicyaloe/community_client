@@ -20,7 +20,8 @@ function Board() {
   var boardIdx = useSelector((state) => state.currentIdx);
 
   const url = useLocation()
-  // writing/:id 에서 id 얻어오기
+
+  // 게시판 이름 얻어오기
   const urlList = url.pathname.split("/")
   const board = urlList[urlList.length - 2];
   console.log(board);
@@ -45,7 +46,7 @@ function Board() {
 
           if (temp.board === board || board === "all") {
             dataTag.push(
-              <Link key={temp.id} to={"/writing/" + temp.id} style={{ textDecoration: 'none' }}>
+              <Link key={temp.id} to={"/writing/" + temp.id + "/"} style={{ textDecoration: 'none' }}>
                 <strong>{temp.title} </strong>글 확인<br/><br/>
               </Link>
             )

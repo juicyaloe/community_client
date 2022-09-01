@@ -9,9 +9,11 @@ function WritingBoard(props) {
     var [data, dataFunc] = useState();
 
     const url = useLocation()
+    const urlList = url.pathname.split("/")
+    const id = urlList[urlList.length - 2];
+    console.log(id);
 
     // writing/:id 에서 id 얻어오기
-    const id = url.pathname.split("/").slice(-1)[0];
 
     useEffect(function() {
         showWriting(id);
