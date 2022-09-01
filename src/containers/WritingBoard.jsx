@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import WritingBoardComp from "../components/WritingBoardComp";
 
 import { postWriting, getPost } from "../funcs/apis";
+import moment from "moment";
 
 function WritingBoard(props) {
   var [data, dataFunc] = useState();
