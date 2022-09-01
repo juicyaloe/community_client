@@ -32,7 +32,9 @@ async function PostBtnClicked() {
     postInfo.title,
     postInfo.content
   );
-  console.log(response);
+  response.json().then(
+    (data) => console.log(data)
+  )
 }
 
 function selectBoard() {

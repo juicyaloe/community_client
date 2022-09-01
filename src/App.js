@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Footer from "./containers/Footer";
 import SideBar from "./containers/SideBar";
 import {Link, Router, Routes, Route} from 'react-router-dom';
+import WritingBoard from "./containers/WritingBoard";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         <div className="col-9">
           <Routes>
             <Route exact path="/" element={<Board></Board>}></Route>
-            <Route path="/post" element={<PostBoard></PostBoard>}></Route>
+            <Route path="/post/" element={<PostBoard></PostBoard>}></Route>
+            <Route path="/writing/:id" element={<WritingBoard></WritingBoard>}></Route>
           </Routes>
         </div>
       </div>
