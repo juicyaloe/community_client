@@ -16,3 +16,8 @@ export const BOARDLIST = {
   CAR: 1,
   AIRPLANE: 2
 }
+
+export const BOARDNAME = {
+  'airplane': '비행기',
+  'car': '자동차'
+}
