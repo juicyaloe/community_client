@@ -46,9 +46,8 @@ function WritingBoard(props) {
             console.log("유효하지 않은 id값")
         }
     }
-  }
-
+    
   return <WritingBoardComp data={data}></WritingBoardComp>;
-}
+}      
 
 export default WritingBoard;
