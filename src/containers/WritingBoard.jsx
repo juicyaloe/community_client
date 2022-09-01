@@ -3,6 +3,7 @@ import {useLocation} from "react-router-dom";
 import WritingBoardComp from "../components/WritingBoardComp";
 
 import { postWriting, getPost } from "../funcs/apis";
+import moment from "moment";
 
 function WritingBoard(props) {
 
@@ -17,7 +18,7 @@ function WritingBoard(props) {
 
     useEffect(function() {
         showWriting(id);
-    });
+    }, [id]);
 
     async function showWriting(id) {
         let response = await getPost(id);
@@ -25,12 +26,13 @@ function WritingBoard(props) {
         if (response.status !== 404) {
             response.json().then(
                 function(data) {
-                    console.log(data);
+
                     let content = 
                         <div>
-                            <h2>{data.title}</h2>
-                            <p>{data.content}</p>
-                            <strong>{data.board} {data.inittime}</strong>
+                            <h2>글 제목: {data.title}</h2>
+                            <p>글 내용: {data.content}</p>
+                            <p>게시판 종류: {data.board}</p>
+                            <p>글 쓴 시각: {data.inittime}</p>
                         </div>
                     dataFunc(content);
                 }
