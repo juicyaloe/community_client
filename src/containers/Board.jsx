@@ -11,6 +11,7 @@ import { Provider, useSelector, useDispatch } from "react-redux";
 import { getBoardList } from "../funcs/boardManage";
 import { Link, Router, Routes, Route, useLocation} from 'react-router-dom';
 import { boardList, BOARDLIST, BOARDINDEX } from "../funcs/boardManage";
+import moment from "moment";
 
 // 이하 컴포넌트의 복잡한 과정을 처리
 function Board() {
