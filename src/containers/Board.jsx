@@ -38,11 +38,24 @@ function Board() {
     
     if (response.status === 200) {
       response.json().then(
-        function(data) {
+        function(_data) {
+          var data = _data.slice()
+          data.sort(
+            function(a, b) {
+                if (a.inittime < b.inittime) {
+                  return 1;
+                } else {
+                  return -1;
+                }
+            }
+          )
           let dataTag = [];
 
           for (var i = 0; i < data.length; i++) {
             let temp = data[i];
+
+            var moment = require('moment');
+            const date = moment(temp.inittime).format("YYYY년 MM월 DD일 HH시 mm분 ss초 작성");
 
             // 검색 로직
             if (temp.title.includes(searchText) || temp.content.includes(searchText)) {
@@ -52,7 +65,7 @@ function Board() {
               <Link key={temp.id} to={"/writing/" + temp.id + "/"} style={{ textDecoration: 'none' }}>
                 <h4 style={{float: "left", color: "black"}} onClick={(e) => e.preventDefault()}>
                   글 제목: {temp.title}</h4>
-                <div onClick={(e) => e.preventDefault()} style={{float: "left"}}>&nbsp;/ {temp.board} 게시판</div>
+                <div onClick={(e) => e.preventDefault()} style={{float: "left"}}>&nbsp;/ {temp.board} 게시판 / &nbsp;{date}</div>
                 <button class="btn btn-primary">글 보기</button>
                 <br/><br/><br/>
               </Link>
