@@ -7,17 +7,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
-import { getBoardList } from "../funcs/boardManage";
+import { boardList, BOARDLIST, BOARDINDEX } from "../funcs/boardManage";
 import { postWriting } from "../funcs/apis";
 import { TOKEN } from "../funcs/TOKEN";
 import {Link, Router, Routes, Route} from 'react-router-dom';
 import { Provider, useSelector, useDispatch } from "react-redux";
-
-const BOARDLIST = {
-  ALL: 0,
-  CAR: 1,
-  AIRPLANE: 2
-}
 
 var selectedBoardIdx = 1;
 var postInfo = {
@@ -28,7 +22,7 @@ var postInfo = {
 async function PostBtnClicked() {
   let response = await postWriting(
     TOKEN,
-    getBoardList()[selectedBoardIdx][1],
+    boardList[selectedBoardIdx][BOARDINDEX.URL],
     postInfo.title,
     postInfo.content
   );
@@ -38,13 +32,12 @@ async function PostBtnClicked() {
 }
 
 function selectBoard() {
-  var boardList = getBoardList();
   var OptionList = [];
 
   for (var i = 1; i < boardList.length; i++) {
     OptionList.push(
       <option key={i} value={i}>
-        {boardList[i][0]}
+        {boardList[i][BOARDINDEX.NAME]}
       </option>
     );
   }

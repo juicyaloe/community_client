@@ -21,7 +21,8 @@ function App() {
         </div>
         <div className="col-9">
           <Routes>
-            <Route exact path="/" element={<Board></Board>}></Route>
+            {/* board: 글 보여주기, post: 글 쓰기, writing: 글 상세 내역 */}
+            <Route path="/board/*" element={<Board></Board>}></Route>
             <Route path="/post/" element={<PostBoard></PostBoard>}></Route>
             <Route path="/writing/:id" element={<WritingBoard></WritingBoard>}></Route>
           </Routes>
