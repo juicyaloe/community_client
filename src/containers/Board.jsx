@@ -9,6 +9,7 @@ import BoardComp from "../components/BoardComp";
 import { getWriting, postWriting } from "../funcs/apis";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import { getBoardList } from "../funcs/boardManage";
+import {Link, Router, Routes, Route} from 'react-router-dom';
 
 // 이하 컴포넌트의 복잡한 과정을 처리
 function Board() {
@@ -30,14 +31,9 @@ function Board() {
       var li = data[i];
       if (li.title.includes(searchText) || li.content.includes(searchText))
         listTag.push(
-          <div key={li.id}>
-            <strong>{li.title}</strong>
-            <br />
-            {li.content}
-            {li.inittime}
-            <br />
-            <br />
-          </div>
+          <Link key={li.id} to={"/writing/" + li.id} >
+            <strong>{li.title}</strong><br/><br/>
+          </Link>
         );
     }
     writngListFunc(listTag);
