@@ -7,13 +7,19 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link, Router, Routes, Route } from "react-router-dom";
+import { Provider, useSelector, useDispatch } from "react-redux";
 import { TOKEN } from "../funcs/TOKEN";
 import { login } from "../funcs/apis";
 
 async function CheckLogin(id, pw) {
+  const dispatch = useDispatch()
   let response = await login("test1", "12341231a");
   if (response.status === 200) {
-    response.json().then((result) => console.log(result.token));
+    response.json().then((result) => {
+      console.log(result.token);
+      dispatch({type:"LOGIN", value:result.token});
+    });
+    
   } else {
     alert("로그인 실패");
   }

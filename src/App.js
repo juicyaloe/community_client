@@ -7,11 +7,13 @@ import "bootstrap/dist/css/bootstrap.css";
 import Footer from "./containers/Footer";
 import SideBar from "./containers/SideBar";
 import { Navigate, Link, Router, Routes, Route } from "react-router-dom";
+import { Provider, useSelector, useDispatch } from "react-redux";
 import WritingBoard from "./containers/WritingBoard";
 import Login from "./containers/Login";
-import { isLogin } from "./funcs/TOKEN";
+
 
 function App() {
+  var isLogin = useSelector((state) => state.isLogin);
   return (
     <div>
       <Routes>
