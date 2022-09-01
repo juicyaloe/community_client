@@ -20,14 +20,26 @@ function WritingBoard(props) {
     });
 
     async function showWriting(id) {
-        let data = await getPost(id);
+        let response = await getPost(id);
+
+        if (response.status !== 404) {
+            response.json().then(
+                function(data) {
+                    console.log(data);
+                    let content = 
+                        <div>
+                            <h2>{data.title}</h2>
+                            <p>{data.content}</p>
+                            <strong>{data.board} {data.inittime}</strong>
+                        </div>
+                    dataFunc(content);
+                }
+            )
+        } else {
+            console.log("유효하지 않은 id값")
+        }
     
-        let content = <div>
-            <h2>{data.title}</h2>
-            <p>{data.content}</p>
-            <strong>{data.board} {data.inittime}</strong>
-        </div>
-        dataFunc(content);
+        
     }
 
     return <WritingBoardComp data={data}></WritingBoardComp>

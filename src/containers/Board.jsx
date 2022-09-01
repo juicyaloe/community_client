@@ -34,27 +34,36 @@ function Board() {
   );
 
   async function loadWriting() {
-    let data = await getWriting("all/");
+    let response = await getWriting("all/");
+    
+    if (response.status === 200) {
+      response.json().then(
+        function(data) {
+          let dataTag = [];
 
-    let dataTag = [];
+          for (var i = 0; i < data.length; i++) {
+            let temp = data[i];
 
-    for (var i = 0; i < data.length; i++) {
-      let temp = data[i];
+            // 검색 로직
+            if (temp.title.includes(searchText) || temp.content.includes(searchText)) {
 
-      // 검색 로직
-      if (temp.title.includes(searchText) || temp.content.includes(searchText)) {
-
-          if (temp.board === board || board === "all") {
+            if (temp.board === board || board === "all") {
             dataTag.push(
               <Link key={temp.id} to={"/writing/" + temp.id + "/"} style={{ textDecoration: 'none' }}>
                 <strong>{temp.title} </strong>글 확인<br/><br/>
               </Link>
-            )
-          }
-      }
-
+                  )
+                }
+              }
+            }
+          boardDataFunc(dataTag);
+        }
+      )
+    } else {
+      console.log("글 불러오기 실패");
     }
-    boardDataFunc(dataTag);
+
+    
   }
 
   return <Routes>
