@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import WritingBoardComp from "../components/WritingBoardComp";
 
 import { postWriting, getPost } from "../funcs/apis";
@@ -33,6 +33,9 @@ function WritingBoard(props) {
                             <p>글 내용: {data.content}</p>
                             <p>게시판 종류: {data.board}</p>
                             <p>글 쓴 시각: {data.inittime}</p>
+                            <Link to="/board/all/">
+                                <button>뒤로가기</button>
+                            </Link>
                         </div>
                     dataFunc(content);
                 }
