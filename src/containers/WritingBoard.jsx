@@ -5,7 +5,7 @@ import { Provider, useSelector, useDispatch } from "react-redux";
 
 import { postWriting, getPost } from "../funcs/apis";
 import moment from "moment";
-import { boardList, BOARDINDEX, BOARDLIST } from "../funcs/boardManage";
+import { boardList, BOARDINDEX, BOARDLIST, BOARDNAME } from "../funcs/boardManage";
 
 function WritingBoard(props) {
 
@@ -35,7 +35,7 @@ function WritingBoard(props) {
                         <div>
                             <h2 style={{textAlign: "left"}}>글 제목: {data.title}</h2><br/><br/>
                             <p style={{textAlign: "left"}}>글 내용: {data.content}</p><br/>
-                            <p style={{textAlign: "left"}}> 게시판 종류: {data.board}</p><br/>
+                            <p style={{textAlign: "left"}}> 게시판 종류: {BOARDNAME[data.board]}</p><br/>
                             <p style={{textAlign: "left"}}>글 쓴 시각: {date}</p>
                             <Link to={"/board/" + boardList[boardIdx][BOARDINDEX.URL]}>
                                 <button class="btn btn-warning">뒤로가기</button>

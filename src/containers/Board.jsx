@@ -10,7 +10,7 @@ import { getWriting, postWriting } from "../funcs/apis";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import { getBoardList } from "../funcs/boardManage";
 import { Link, Router, Routes, Route, useLocation} from 'react-router-dom';
-import { boardList, BOARDLIST, BOARDINDEX } from "../funcs/boardManage";
+import { boardList, BOARDLIST, BOARDINDEX, BOARDNAME } from "../funcs/boardManage";
 import moment from "moment";
 
 // 이하 컴포넌트의 복잡한 과정을 처리
@@ -64,8 +64,8 @@ function Board() {
             dataTag.push(
               <Link key={temp.id} to={"/writing/" + temp.id + "/"} style={{ textDecoration: 'none' }}>
                 <h4 style={{float: "left", color: "black"}} onClick={(e) => e.preventDefault()}>
-                  글 제목: {temp.title}</h4>
-                <div onClick={(e) => e.preventDefault()} style={{float: "left"}}>&nbsp;/ {temp.board} 게시판 / &nbsp;{date}</div>
+                  글: {temp.title}</h4>
+                <div onClick={(e) => e.preventDefault()} style={{float: "left"}}>&nbsp;/ {BOARDNAME[temp.board]} 게시판 / &nbsp;{date}</div>
                 <button class="btn btn-primary">글 보기</button>
                 <br/><br/><br/>
               </Link>
