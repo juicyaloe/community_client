@@ -6,9 +6,10 @@ import PostBoard from "./containers/PostBoard";
 import "bootstrap/dist/css/bootstrap.css";
 import Footer from "./containers/Footer";
 import SideBar from "./containers/SideBar";
-import { Link, Router, Routes, Route } from "react-router-dom";
+import { Navigate, Link, Router, Routes, Route } from "react-router-dom";
 import WritingBoard from "./containers/WritingBoard";
 import Login from "./containers/Login";
+import { isLogin } from "./funcs/TOKEN";
 
 function App() {
   return (
@@ -16,9 +17,10 @@ function App() {
       <Routes>
         {/* 로그인 모듈 */}
         <Route path="/login/" element={<App_Login></App_Login>}></Route>
-
         {/* 일반 모듈 */}
-        <Route path="/*" element={<App_Board></App_Board>}></Route>
+        <Route path="/*" element={
+          isLogin ? <App_Board></App_Board> : <Navigate to="/login/"></Navigate>   
+        }></Route>
       </Routes>
     </div>
   );
