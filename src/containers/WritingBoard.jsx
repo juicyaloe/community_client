@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import {Link, useLocation} from "react-router-dom";
 import WritingBoardComp from "../components/WritingBoardComp";
+import { Provider, useSelector, useDispatch } from "react-redux";
 
 import { postWriting, getPost } from "../funcs/apis";
 import moment from "moment";
+import { boardList, BOARDINDEX, BOARDLIST } from "../funcs/boardManage";
 
 function WritingBoard(props) {
 
     var [data, dataFunc] = useState();
+    var boardIdx = useSelector((state) => state.currentIdx);
 
     const url = useLocation()
     const urlList = url.pathname.split("/")
@@ -32,7 +35,7 @@ function WritingBoard(props) {
                             <p>글 내용: {data.content}</p>
                             <p>게시판 종류: {data.board}</p>
                             <p>글 쓴 시각: {data.inittime}</p>
-                            <Link to="/board/all/">
+                            <Link to={"/board/" + boardList[boardIdx][BOARDINDEX.URL]}>
                                 <button class="btn btn-warning">뒤로가기</button>
                             </Link>
                         </div>
