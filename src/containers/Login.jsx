@@ -8,11 +8,11 @@ import React, { useEffect, useState } from "react";
 import LoginComp from "../components/LoginComp";
 import { Provider, useSelector, useDispatch } from "react-redux";
 
-function Footer() {
+function Login() {
   // 처음 1회만 실행
   useEffect(function () {}, []);
 
   return <LoginComp></LoginComp>;
 }
 
-export default Footer;
+export default Login;

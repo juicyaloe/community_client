@@ -8,6 +8,7 @@ import Footer from "./containers/Footer";
 import SideBar from "./containers/SideBar";
 import {Link, Router, Routes, Route} from 'react-router-dom';
 import WritingBoard from "./containers/WritingBoard";
+import Login from "./containers/Login";
 
 function App() {
   return (
