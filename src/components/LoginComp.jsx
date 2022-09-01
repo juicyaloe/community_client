@@ -12,19 +12,22 @@ import { TOKEN } from "../funcs/TOKEN";
 import { login } from "../funcs/apis";
 
 async function CheckLogin(id, pw) {
-  const dispatch = useDispatch()
   let response = await login("test1", "12341231a");
+  var _token = ""
   if (response.status === 200) {
     response.json().then((result) => {
-      console.log(result.token);
-      dispatch({type:"LOGIN", value:result.token});
+      _token = result.token;
+      console.log(_token);
     });
-    
-  } else {
+  } 
+  else {
     alert("로그인 실패");
+    return "";
   }
+  return _token;
 }
 function LoginComp(props) {
+  const dispatch = useDispatch()
   var id, password;
   return (
     <div>
@@ -46,7 +49,13 @@ function LoginComp(props) {
           </div>
           <button
             class="btn btn-primary float-end"
-            onClick={() => CheckLogin(id, password)}
+            onClick={async() => {
+              var token = await CheckLogin(id, password);
+              // if(token!==""){
+              //   dispatch({type:"LOGIN", value:token});
+              // }
+              // console.log(token)
+            }}
           >
             로그인
           </button>
