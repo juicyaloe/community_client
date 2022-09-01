@@ -7,7 +7,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
-import { getBoardList } from "../funcs/boardManage";
+import { boardList } from "../funcs/boardManage";
 import { postWriting } from "../funcs/apis";
 import { TOKEN } from "../funcs/TOKEN";
 import {Link, Router, Routes, Route} from 'react-router-dom';
@@ -28,7 +28,7 @@ var postInfo = {
 async function PostBtnClicked() {
   let response = await postWriting(
     TOKEN,
-    getBoardList()[selectedBoardIdx][1],
+    boardList[selectedBoardIdx][1],
     postInfo.title,
     postInfo.content
   );
@@ -38,7 +38,6 @@ async function PostBtnClicked() {
 }
 
 function selectBoard() {
-  var boardList = getBoardList();
   var OptionList = [];
 
   for (var i = 1; i < boardList.length; i++) {
