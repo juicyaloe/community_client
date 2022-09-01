@@ -33,7 +33,7 @@ function WritingBoard(props) {
                             <p>게시판 종류: {data.board}</p>
                             <p>글 쓴 시각: {data.inittime}</p>
                             <Link to="/board/all/">
-                                <button>뒤로가기</button>
+                                <button class="btn btn-warning">뒤로가기</button>
                             </Link>
                         </div>
                     dataFunc(content);
