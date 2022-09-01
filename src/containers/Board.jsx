@@ -24,7 +24,6 @@ function Board() {
   // 게시판 이름 얻어오기
   const urlList = url.pathname.split("/")
   const board = urlList[urlList.length - 2];
-  console.log(board);
 
   useEffect(
     function () {
