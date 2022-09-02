@@ -6,14 +6,24 @@
 
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css'
-import {getWriting, postWriting, login, getPost} from "../funcs/apis";
+import {getWriting, postWriting, login, getPost, register} from "../funcs/apis";
 import {Link, Router, Routes, Route} from 'react-router-dom';
 import {BOARDLIST, boardList} from "../funcs/boardManage";
 
 // 넘겨받은 정보를 show 하는 정도로만 구현
 function BoardComp(props) {
 
-    return <div>{props.data}</div>
+    return <div>{props.data}
+    
+        <button onClick={async function() {
+            let response = await register("t3", "1234as12", "test3@test.com");
+            console.log(response);
+
+        }}>
+            회원 가입 테스트 버튼
+        </button>
+    
+    </div>
 }
 
         //  <button onClick={async function() {
