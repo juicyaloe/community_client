@@ -44,7 +44,7 @@ function App_Board() {
     <div className="App container d-flex flex-column min-vh-100">
       <NavBar></NavBar>
       <div className="row pt-3">
-        <div className="col-3 bg-primary bg-opacity-25">
+        <div className="col-3">
           <SideBar></SideBar>
         </div>
         <div className="col-9">

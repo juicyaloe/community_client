@@ -1,7 +1,7 @@
 import { createStore } from "redux";
 export default createStore(function (state, action) {
   if (state === undefined) {
-    return {token: "", isLogin: false,  searchText: "", currentIdx: 0 };
+    return {token: "", isLogin: true,  searchText: "", currentIdx: 0 };
   }
 
   if (action.type === "SEARCH") {
