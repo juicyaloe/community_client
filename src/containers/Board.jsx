@@ -74,7 +74,7 @@ function Board() {
                   <div class="container row">
                     <div class="card-title float-start col-4 text-start" style={{fontSize:"16px"}}>{temp.title}</div>
                 
-                    <div class="card-subtitle text-muted text-start col-9" style={{fontSize:"13px"}}>{BOARDNAME[temp.board]} 게시판</div>
+                    <div class="card-subtitle text-muted text-start col-9" style={{fontSize:"13px"}}>{BOARDNAME[temp.board]} 게시판/ 아이디 '{temp.writer}' 작성</div>
                     <div class="card-text col-3 text-end" style={{fontSize:"13px"}}>{timeGap}</div> 
                   </div>
                 </div>
