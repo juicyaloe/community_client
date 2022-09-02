@@ -57,8 +57,10 @@ function WritingBoard(props) {
                                     <h2 style={{textAlign: "left"}}>글 제목: {data.title}</h2><br/><br/>
                                     <p style={{textAlign: "left"}}>글 내용: {data.content}</p><br/>
                                     <p style={{textAlign: "left"}}> 게시판 종류: {BOARDNAME[data.board]}</p><br/>
+                                    <p style={{textAlign: "left"}}>글 작성자: {data.writer}</p><br/>
                                     <p style={{textAlign: "left"}}>글 쓴 시각: {date}</p>
-                                    {showComment(data.comments)}
+                                    {showComment(data.comments).length !== 0 ? showComment(data.comments) :
+                                    <p>달린 댓글이 없습니다.</p>}
                                     <Link to={"/board/" + boardList[boardIdx][BOARDINDEX.URL]}>
                                         <button class="btn btn-warning">뒤로가기</button>
                                     </Link>
