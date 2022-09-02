@@ -68,3 +68,44 @@ export async function getPost(id) {
 
   return response;
 }
+
+export async function postComment(token, post_id, content) {
+  var response;
+  await fetch(address + "api/comment/all/",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Token " + token
+    },
+    body: JSON.stringify({
+      post_id: post_id,
+      content: content
+    })
+  }).then((_response) => response = _response)
+  // response.status
+  // resposne.json()
+
+  return response;
+}
+
+export async function register(id, password, email) {
+  var response;
+  await fetch(address + "api/users/register/",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: id,
+      password: password,
+      password2: password,
+      email: email
+    })
+  }).then((_response) => response = _response)
+  // response.status
+  // resposne.json()
+
+  return response;
+}

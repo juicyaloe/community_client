@@ -1,4 +1,6 @@
 import { createStore } from "redux";
+
+// id: t1, password: 1234as12 하면 됨
 export default createStore(function (state, action) {
   if (state === undefined) {
     return {token: "", isLogin: false,  searchText: "", currentIdx: 0 };

@@ -39,9 +39,9 @@ function NavBarComp(props) {
               </Link>
             </li>
             <li className="nav-item float-end">
-              <Link className="nav-link" to="/login/">
-                로그인
-              </Link>
+              <a className="nav-link" href="/login/">
+                로그아웃
+              </a>
             </li>
           </ul>
         </div>

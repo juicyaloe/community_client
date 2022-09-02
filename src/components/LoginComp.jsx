@@ -8,7 +8,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link, Router, Routes, Route } from "react-router-dom";
 import { Provider, useSelector, useDispatch } from "react-redux";
-import { TOKEN } from "../funcs/TOKEN";
 import { login } from "../funcs/apis";
 
 function LoginComp(props) {

@@ -9,7 +9,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
 import { boardList, BOARDLIST, BOARDINDEX } from "../funcs/boardManage";
 import { postWriting } from "../funcs/apis";
-import { TOKEN } from "../funcs/TOKEN";
 import {Link, Router, Routes, Route} from 'react-router-dom';
 import { Provider, useSelector, useDispatch } from "react-redux";
 
@@ -19,9 +18,9 @@ var postInfo = {
   content: "",
 };
 
-async function PostBtnClicked() {
+async function PostBtnClicked(token) {
   let response = await postWriting(
-    TOKEN,
+    token,
     boardList[selectedBoardIdx][BOARDINDEX.URL],
     postInfo.title,
     postInfo.content
@@ -55,6 +54,7 @@ function selectBoard() {
   );
 }
 function PostBoardComp(props) {
+  const token = useSelector((state) =>state.token);
   const dispatch = useDispatch()
   return (
     <div>
@@ -82,8 +82,8 @@ function PostBoardComp(props) {
       ></textarea>
       <div class="d-grid gap-2 mt-2">
         <Link to="/board/all/">
-          <button class="btn btn-primary" type="button" onClick={ function() {
-            PostBtnClicked()
+          <button class="btn btn-primary float-end" type="button" onClick={ function() {
+            PostBtnClicked(token)
             dispatch({ type: "CHANGEINDEX", value: BOARDLIST.ALL });
           }}>
             글 작성

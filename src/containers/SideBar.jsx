@@ -20,21 +20,21 @@ function SideBar() {
   var result = [];
   for (var i = 0; i < boardList.length; i++) {
     result.push(
-      <Link
+      <Link key={i}
         to={"/board/" + boardList[i][BOARDINDEX.URL]}
         style={{ textDecoration: "none" }}
       >
-        <button
+        <li
           data-id={i}
           key={i}
-          class="list-group-item"
+          class="list-group-item shadow-sm p-2 mb-1 bg-body rounded"
           onClick={(e) => {
             dispatch({ type: "CHANGEINDEX", value: e.target.dataset.id });
             dispatch({ type: "SEARCH", value: "" });
           }}
         >
           {boardList[i][BOARDINDEX.NAME]}
-        </button>
+        </li>
       </Link>
     );
   }

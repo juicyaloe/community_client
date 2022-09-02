@@ -55,19 +55,30 @@ function Board() {
             let temp = data[i];
 
             var moment = require('moment');
-            const date = moment(temp.inittime).format("YYYY년 MM월 DD일 HH시 mm분 ss초 작성");
-
+            const date = moment(temp.inittime).format("YYYY.MM.DD.HH.mm.ss");
+            const timeGap = moment(date, 'YYYY.MM.DD.HH.mm.ss').fromNow();
             // 검색 로직
             if (temp.title.includes(searchText) || temp.content.includes(searchText)) {
 
             if (temp.board === board || board === "all") {
             dataTag.push(
               <Link key={temp.id} to={"/writing/" + temp.id + "/"} style={{ textDecoration: 'none' }}>
-                <h4 style={{float: "left", color: "black"}} onClick={(e) => e.preventDefault()}>
+                {/* <h4 style={{float: "left", color: "black"}} onClick={(e) => e.preventDefault()}>
                   글: {temp.title}</h4>
                 <div onClick={(e) => e.preventDefault()} style={{float: "left"}}>&nbsp;/ {BOARDNAME[temp.board]} 게시판 / &nbsp;{date}</div>
                 <button class="btn btn-primary">글 보기</button>
-                <br/><br/><br/>
+                <br/><br/><br/> */}
+
+                <div class="card mt-1">
+                <div class="card-body">
+                  <div class="container row">
+                    <div class="card-title float-start col-4 text-start" style={{fontSize:"16px"}}>{temp.title}</div>
+                
+                    <div class="card-subtitle text-muted text-start col-9" style={{fontSize:"13px"}}>{BOARDNAME[temp.board]} 게시판/ 아이디 '{temp.writer}' 작성</div>
+                    <div class="card-text col-3 text-end" style={{fontSize:"13px"}}>{timeGap}</div> 
+                  </div>
+                </div>
+              </div>
               </Link>
                   )
                 }
