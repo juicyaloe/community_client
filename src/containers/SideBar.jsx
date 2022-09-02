@@ -20,7 +20,7 @@ function SideBar() {
   var result = [];
   for (var i = 0; i < boardList.length; i++) {
     result.push(
-      <Link
+      <Link key={i}
         to={"/board/" + boardList[i][BOARDINDEX.URL]}
         style={{ textDecoration: "none" }}
       >

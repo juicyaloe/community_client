@@ -14,7 +14,7 @@ function showComment(comments) {
     for (var i = 0; i < comments.length; i++)
     {
         let data = comments[i]
-        let temp = <div class="card mt-1">
+        let temp = <div key={i} class="card mt-1">
         <div class="card-body">
           <div class="container row">    
             <div class="card-subtitle text-muted text-start col-9" style={{fontSize:"15px"}}><h4 style={{display: 'inline'}}>{data.writer}:&nbsp;&nbsp;</h4>{data.content}</div>
