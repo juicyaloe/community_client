@@ -37,12 +37,13 @@ function WritingBoard(props) {
     const url = useLocation()
     const urlList = url.pathname.split("/")
     const id = urlList[urlList.length - 2];
+    var reload = 1;
 
     // writing/:id 에서 id 얻어오기
 
     useEffect(function() {
         showWriting(id);
-    }, [id]);
+    }, [id], [reload]);
 
     async function showWriting(id) {
         let response = await getPost(id);
@@ -63,12 +64,14 @@ function WritingBoard(props) {
                                     {showComment(data.comments).length !== 0 ? showComment(data.comments) :
                                     <p>달린 댓글이 없습니다.</p>}
 
+                                    {/* 테스트 코드 */}
                                     <button onClick={
                                         async function() {
                                             let response = await postComment(token, id, "댓글 달기 테스트")
                                             console.log(response);
+                                            showWriting(id);
                                         }
-                                    }>테스트 버튼</button>
+                                    }>댓글 달기 테스트 버튼</button>
 
                                     <Link to={"/board/" + boardList[boardIdx][BOARDINDEX.URL]}>
                                         <button class="btn btn-warning">뒤로가기</button>
