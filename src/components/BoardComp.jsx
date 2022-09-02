@@ -7,7 +7,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css'
 import {getWriting, postWriting, login, getPost} from "../funcs/apis";
-import { TOKEN } from "../funcs/TOKEN";
 import {Link, Router, Routes, Route} from 'react-router-dom';
 import {BOARDLIST, boardList} from "../funcs/boardManage";
 

@@ -32,6 +32,7 @@ function WritingBoard(props) {
 
     var [data, dataFunc] = useState();
     var boardIdx = useSelector((state) => state.currentIdx);
+    const token = useSelector((state) =>state.token);
 
     const url = useLocation()
     const urlList = url.pathname.split("/")
@@ -62,11 +63,13 @@ function WritingBoard(props) {
                                     {showComment(data.comments).length !== 0 ? showComment(data.comments) :
                                     <p>달린 댓글이 없습니다.</p>}
 
-                                    {/* <button onClick={
+                                    <button onClick={
                                         async function() {
-                                            let response = await postComment()
+                                            let response = await postComment(token, id, "댓글 달기 테스트")
+                                            console.log(response);
                                         }
-                                    }>테스트 버튼</button> */}
+                                    }>테스트 버튼</button>
+
                                     <Link to={"/board/" + boardList[boardIdx][BOARDINDEX.URL]}>
                                         <button class="btn btn-warning">뒤로가기</button>
                                     </Link>
