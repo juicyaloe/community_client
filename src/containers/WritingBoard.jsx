@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import WritingBoardComp from "../components/WritingBoardComp";
 import { Provider, useSelector, useDispatch } from "react-redux";
 
-import { postWriting, getPost } from "../funcs/apis";
+import { postWriting, getPost, postComment } from "../funcs/apis";
 import moment from "moment";
 import { boardList, BOARDINDEX, BOARDLIST, BOARDNAME } from "../funcs/boardManage";
 
@@ -61,6 +61,12 @@ function WritingBoard(props) {
                                     <p style={{textAlign: "left"}}>글 쓴 시각: {date}</p>
                                     {showComment(data.comments).length !== 0 ? showComment(data.comments) :
                                     <p>달린 댓글이 없습니다.</p>}
+
+                                    {/* <button onClick={
+                                        async function() {
+                                            let response = await postComment()
+                                        }
+                                    }>테스트 버튼</button> */}
                                     <Link to={"/board/" + boardList[boardIdx][BOARDINDEX.URL]}>
                                         <button class="btn btn-warning">뒤로가기</button>
                                     </Link>
