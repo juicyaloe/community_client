@@ -10,31 +10,22 @@ import { Navigate, Link, Router, Routes, Route } from "react-router-dom";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import WritingBoard from "./containers/WritingBoard";
 import Login from "./containers/Login";
+import Register from "./containers/Register";
 import { useEffect } from "react";
 
-
-function App() {
-  var isLogin = useSelector((state) => state.isLogin);
-  return (
-    <div>
-      <Routes>
-        {/* 로그인 모듈 */}
-        <Route path="/login/" element={
-         !isLogin ? <App_Login></App_Login> : <Navigate to="/"></Navigate>    
-        }></Route>
-        {/* 일반 모듈 */}
-        <Route path="/*" element={
-          isLogin ? <App_Board></App_Board> : <Navigate to="/login/"></Navigate>   
-        }></Route>
-      </Routes>
-    </div>
-  );
-}
 
 function App_Login() {
   return (
     <div>
       <Login></Login>
+    </div>
+  );
+}
+
+function App_Register() {
+  return (
+    <div>
+      <Register></Register>
     </div>
   );
 }
@@ -59,6 +50,27 @@ function App_Board() {
       <div className="mt-auto">
         <Footer></Footer>
       </div>
+    </div>
+  );
+}
+
+
+function App() {
+  var isLogin = useSelector((state) => state.isLogin);
+  return (
+    <div>
+      <Routes>
+        {/* 로그인 모듈 */}
+        <Route path="/login/" element={
+         !isLogin ? <App_Login></App_Login> : <Navigate to="/"></Navigate>    
+        }></Route>
+        {/* 회원가입 모듈 */}
+        <Route path="/register/" element={<App_Register></App_Register>}></Route>
+        {/* 일반 모듈 */}
+        <Route path="/*" element={
+          isLogin ? <App_Board></App_Board> : <Navigate to="/login/"></Navigate>   
+        }></Route>
+      </Routes>
     </div>
   );
 }

@@ -14,7 +14,7 @@ function LoginComp(props) {
   const dispatch = useDispatch()
   var id, password;
   return (
-    <div>
+    <div class="float-end p-5">
       <div class="input-group mb-4">
         <div>
           <div class="mb-2">
@@ -33,7 +33,7 @@ function LoginComp(props) {
           </div>
           <Link to="/">
             <button
-              class="btn btn-primary float-end"
+              class="btn btn-primary me-2"
               onClick={async function() {
                 let response = await login(id, password);
 
@@ -48,6 +48,12 @@ function LoginComp(props) {
 
               }}>
               로그인
+            </button>
+          </Link>
+          <Link to="/register">
+            <button
+              class="btn btn-primary">
+              회원가입
             </button>
           </Link>
         </div>

@@ -1,18 +1,18 @@
 /************************************************
- * 로그인 바 관련 컴포넌트 정의
+ * 회원가입 바 관련 컴포넌트 정의
  *
  *
  *************************************************/
 
 import React, { useEffect, useState } from "react";
-import LoginComp from "../components/LoginComp";
+import RegisterComp from "../components/RegisterComp";
 import { Provider, useSelector, useDispatch } from "react-redux";
 
-function Login() {
+function Register() {
   // 처음 1회만 실행
   useEffect(function () {}, []);
 
-  return <LoginComp></LoginComp>;
+  return <RegisterComp></RegisterComp>;
 }
 
-export default Login;
+export default Register;
