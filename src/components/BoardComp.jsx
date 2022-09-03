@@ -14,15 +14,6 @@ import {BOARDLIST, boardList} from "../funcs/boardManage";
 function BoardComp(props) {
 
     return <div>{props.data}
-    
-        <button onClick={async function() {
-            let response = await register("t3", "1234as12", "test3@test.com");
-            console.log(response);
-
-        }}>
-            회원 가입 테스트 버튼
-        </button>
-    
     </div>
 }
 
