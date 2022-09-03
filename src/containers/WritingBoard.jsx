@@ -41,6 +41,8 @@ function WritingBoard(props) {
 
     // writing/:id 에서 id 얻어오기
 
+    var [isLike, isLikeFunc] = useState(false);
+
     useEffect(function() {
         showWriting(id);
     }, [id], [reload]);
@@ -52,15 +54,24 @@ function WritingBoard(props) {
             response.json().then(
                 function(data) {
                     var moment = require('moment');
-                            const date = moment(data.inittime).format("YYYY년 MM월 DD일 HH시 mm분 ss초");
-        
+                            const date = moment(data.inittime).format("YYYY.MM.DD.HH.mm.ss");
+                            const timeGap = moment(date, 'YYYY.MM.DD.HH.mm.ss').fromNow();
                             let content = 
                                 <div>
-                                    <h2 style={{textAlign: "left"}}>글 제목: {data.title}</h2><br/><br/>
-                                    <p style={{textAlign: "left"}}>글 내용: {data.content}</p><br/>
-                                    <p style={{textAlign: "left"}}> 게시판 종류: {BOARDNAME[data.board]}</p><br/>
-                                    <p style={{textAlign: "left"}}>글 작성자: {data.writer}</p><br/>
-                                    <p style={{textAlign: "left"}}>글 쓴 시각: {date}</p>
+                                    <div class="card-header text-start bg-white" style={{fontSize:"20px"}}>{BOARDNAME[data.board]} 게시판</div><br/>
+                                    <div class="row">
+                                        <img class="col-sm-1 figure-img " src="/profileimg.png" style={{height:"60px", width:"80px"}}></img>
+                                        <div class="col-sm-10">
+                                            <div class="row ">
+                                                <b class=" col-12 m-0 p-0 text-start" style={{"fontSize":"20px"}}>{data.writer}</b><br/>
+                                                <p class="col-12 p-0 text-start ">{timeGap}</p> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <b class="col-12 text-start float-start m-2" style={{fontSize:"25px"}}>{data.title}</b>
+                                    <p class="m-3" style={{textAlign: "left"}}>{data.content}</p>
+                                    
+                                    
                                     {showComment(data.comments).length !== 0 ? showComment(data.comments) :
                                     <p>달린 댓글이 없습니다.</p>}
 
@@ -88,8 +99,13 @@ function WritingBoard(props) {
             console.log("유효하지 않은 id값")
         }
     }
-    
-  return <WritingBoardComp data={data}></WritingBoardComp>;
+    let result = <div class="card p-3">{data}
+    {isLike ? 
+        <img class="ms-2 p-0" src="/likeimg.png" style={{height:"30px", width:"30px", cursor:"pointer"}} onClick={()=> {isLikeFunc(false); console.log(isLike)}}></img> : 
+        <img class="ms-2 p-0" src="/dislikeimg.png" style={{height:"30px", width:"30px", cursor:"pointer"}} onClick={()=> {isLikeFunc(true); console.log(isLike)}}></img>
+    }
+    </div>
+    return <WritingBoardComp data={result}></WritingBoardComp>;
 }      
 
 export default WritingBoard;
