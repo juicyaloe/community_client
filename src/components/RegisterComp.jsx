@@ -35,6 +35,7 @@ function RegisterComp(props) {
           <div class="mb-2">
             <input
               onChange={(e) => (password = e.target.value)}
+              type="password"
               class="form-control"
               placeholder="비밀번호"
             />
@@ -42,6 +43,7 @@ function RegisterComp(props) {
           <div class="mb-2">
             <input
               onChange={(e) => (password2 = e.target.value)}
+              type="password"
               class="form-control"
               placeholder="비밀번호 확인"
             />
