@@ -14,18 +14,26 @@ function showComment(comments) {
     for (var i = 0; i < comments.length; i++)
     {
         let data = comments[i]
-        let temp = <div key={i} class="card mt-1">
-        <div class="card-body">
-          <div class="container row">    
-            <div class="card-subtitle text-muted text-start col-9" style={{fontSize:"15px"}}><h4 style={{display: 'inline'}}>{data.writer}:&nbsp;&nbsp;</h4>{data.content}</div>
-          </div>
-        </div>
-      </div>
+        var moment = require('moment');
+        const date = moment(data.inittime).format("YYYY.MM.DD.HH.mm.ss");
+        const timeGap = moment(date, 'YYYY.MM.DD.HH.mm.ss').fromNow();
+
+        let temp =
+        
+            <li class="list-group-item text-start">
+                <div class="row">
+                    <h6 class="mt-1 mb-1">{data.writer}</h6>
+                    <div class="text-muted " style={{fontSize:"16px"}}>{data.content}</div>
+                    <div class="text-muted float-end" style={{fontSize:"12px"}}>{timeGap}</div>
+                </div>
+            </li>
+        
+            // <div class="card-subtitle text-muted text-start col-9" style={{fontSize:"15px"}}><h4 style={{display: 'inline'}}>{data.writer}:&nbsp;&nbsp;</h4>{data.content}</div>
 
       commentList.push(temp);
     }
 
-    return commentList;
+    return <div class="card"><ul class="list-group list-group-flush">{commentList}</ul></div>;
 }
 
 function WritingBoard(props) {
@@ -42,6 +50,7 @@ function WritingBoard(props) {
     // writing/:id 에서 id 얻어오기
 
     var [isLike, isLikeFunc] = useState(false);
+    const [comment, commentFunc] = useState("");
 
     useEffect(function() {
         showWriting(id);
@@ -70,23 +79,14 @@ function WritingBoard(props) {
                                     </div>
                                     <b class="col-12 text-start float-start m-2" style={{fontSize:"25px"}}>{data.title}</b>
                                     <p class="m-3" style={{textAlign: "left"}}>{data.content}</p>
-                                    
+
+
                                     
                                     {showComment(data.comments).length !== 0 ? showComment(data.comments) :
                                     <p>달린 댓글이 없습니다.</p>}
 
-                                    {/* 테스트 코드 */}
-                                    <button onClick={
-                                        async function() {
-                                            let response = await postComment(token, id, "댓글 달기 테스트")
-                                            console.log(response);
-                                            showWriting(id);
-                                        }
-                                    }>댓글 달기 테스트 버튼</button>
+                                    
 
-                                    <Link to={"/board/" + boardList[boardIdx][BOARDINDEX.URL]}>
-                                        <button class="btn btn-warning">뒤로가기</button>
-                                    </Link>
                                 </div>
 
 
@@ -100,10 +100,27 @@ function WritingBoard(props) {
         }
     }
     let result = <div class="card p-3">{data}
-    {isLike ? 
-        <img class="ms-2 p-0" src="/likeimg.png" style={{height:"30px", width:"30px", cursor:"pointer"}} onClick={()=> {isLikeFunc(false); console.log(isLike)}}></img> : 
-        <img class="ms-2 p-0" src="/dislikeimg.png" style={{height:"30px", width:"30px", cursor:"pointer"}} onClick={()=> {isLikeFunc(true); console.log(isLike)}}></img>
-    }
+
+    <div class="input-group mb-3 mt-4">
+        <input type="text" class="form-control ps-3" placeholder="댓글을 입력하세요" onChange={(e)=>commentFunc(e.target.value)} value={comment}/>
+        <button class="btn btn-outline-secondary" type="button" onClick={
+            async function() {
+                let response = await postComment(token, id, comment)
+                console.log(response);
+                showWriting(id);
+                commentFunc("");
+            }
+        }>댓글 달기</button>
+    </div>
+    <div>
+        {isLike ? 
+            <img class="ms-2 p-0 float-start" src="/likeimg.png" style={{height:"30px", width:"30px", cursor:"pointer"}} onClick={()=> {isLikeFunc(false); console.log(isLike)}}></img> : 
+            <img class="ms-2 p-0 float-start" src="/dislikeimg.png" style={{height:"30px", width:"30px", cursor:"pointer"}} onClick={()=> {isLikeFunc(true); console.log(isLike)}}></img>
+        }
+        <Link to={"/board/" + boardList[boardIdx][BOARDINDEX.URL]}>
+            <button class="btn btn-warning float-end">뒤로가기</button>
+        </Link>
+    </div>
     </div>
     return <WritingBoardComp data={result}></WritingBoardComp>;
 }      
