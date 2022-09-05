@@ -7,8 +7,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link, Router, Routes, Route } from "react-router-dom";
+import { Provider, useSelector, useDispatch } from "react-redux";
 
 function NavBarComp(props) {
+  const dispatch = useDispatch();
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
@@ -39,9 +41,13 @@ function NavBarComp(props) {
               </Link>
             </li>
             <li className="nav-item float-end">
-              <a className="nav-link" href="/login/">
+              <Link className="nav-link" to="/login/" onClick={
+                function() {
+                  dispatch({type: "LOGOUT"});
+                }
+              }>
                 로그아웃
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
