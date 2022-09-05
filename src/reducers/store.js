@@ -1,7 +1,4 @@
-import { createStore } from "redux";
-
-// id: t1, password: 1234as12 하면 됨
-export default createStore(function (state, action) {
+export default function mainStore(state, action) {
   if (state === undefined) {
     return {token: "", isLogin: false,  searchText: "", currentIdx: 0 };
   }
@@ -17,5 +14,10 @@ export default createStore(function (state, action) {
     return { ...state, isLogin: true, token: action.value };
   }
   
+  if(action.type === "LOGOUT") {
+    return { ...state, isLogin: false, token: ""}
+  }
   return state;
-});
+}
+
+

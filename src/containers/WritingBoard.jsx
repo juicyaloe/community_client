@@ -105,7 +105,8 @@ function WritingBoard(props) {
         <input type="text" class="form-control ps-3" placeholder="댓글을 입력하세요" onChange={(e)=>commentFunc(e.target.value)} value={comment}/>
         <button class="btn btn-outline-secondary" type="button" onClick={
             async function() {
-                let response = await postComment(token, id, comment)
+                let response = await postComment(token, id, comment === "" ? "내용 없음": comment);
+                
                 console.log(response);
                 showWriting(id);
                 commentFunc("");
