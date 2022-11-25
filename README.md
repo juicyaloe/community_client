@@ -1,6 +1,6 @@
 # community client
 
-### React를 활용한 간단한 커뮤니티 앱입니다.
+### React를 활용한 간단한 커뮤니티 앱입니다. ( 개발 종료 )
 
 #### 사용한 라이브러리:
 - bootstrap
